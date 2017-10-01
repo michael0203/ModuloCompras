@@ -1,5 +1,13 @@
+package br.compra.telas;
+
+import java.awt.Dimension;
+import javax.swing.JInternalFrame;
+
 
 public class Principal extends javax.swing.JFrame {
+    
+    private final RequisicaoCompra req = new RequisicaoCompra();
+    private Dimension d;
 
     public Principal() {
         initComponents();
@@ -12,7 +20,7 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        desktopPane_principal = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         menu_compras = new javax.swing.JMenu();
         requisicao = new javax.swing.JMenuItem();
@@ -23,24 +31,28 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Módulo Compras");
-        setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        jDesktopPane1.setBackground(new java.awt.Color(240, 240, 240));
+        desktopPane_principal.setBackground(new java.awt.Color(240, 240, 240));
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        javax.swing.GroupLayout desktopPane_principalLayout = new javax.swing.GroupLayout(desktopPane_principal);
+        desktopPane_principal.setLayout(desktopPane_principalLayout);
+        desktopPane_principalLayout.setHorizontalGroup(
+            desktopPane_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 866, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+        desktopPane_principalLayout.setVerticalGroup(
+            desktopPane_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 578, Short.MAX_VALUE)
         );
 
         menu_compras.setText("Compras");
 
         requisicao.setText("Requisição de Compras");
+        requisicao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                requisicaoActionPerformed(evt);
+            }
+        });
         menu_compras.add(requisicao);
 
         pedido.setText("Pedido de Compras");
@@ -63,15 +75,34 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(desktopPane_principal)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(desktopPane_principal)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+      public void Janela(JInternalFrame frame) {
+        desktopPane_principal.remove(frame);
+        desktopPane_principal.add(frame);
+        frame.moveToFront();
+        frame.setVisible(true);
+        Centralizar(frame);
+    }
+
+    public void Centralizar(JInternalFrame frame) {
+        d = frame.getDesktopPane().getSize();
+        frame.setLocation((d.width - frame.getSize().width) / 2, (d.height - frame.getSize().height) / 2);
+    }
+    
+    private void requisicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requisicaoActionPerformed
+
+        Janela(req);
+        
+    }//GEN-LAST:event_requisicaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,8 +138,8 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane desktopPane_principal;
     private javax.swing.JMenuItem entrada_mercadorias;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu menu_compras;
     private javax.swing.JMenu menu_estoque;
